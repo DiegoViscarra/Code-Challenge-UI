@@ -1,0 +1,24 @@
+.container {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    height: calc(100vh - 76px);
+}
+
+.container__text{
+    width:650px;
+    height:350px;
+    color: black;
+    font-size: 36px;
+    font-weight: bolder;
+    background-color: #97F0E9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2.5;
+}
