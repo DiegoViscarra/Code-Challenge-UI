@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Register student to classes</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Register class to students</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
@@ -7,12 +7,12 @@
         <div class="form-row">
             <div class="form-group col-md-12">
                 <ng-select
-                [items]="classes"
-                bindLabel="title"
-                placeholder="Select Class"
+                [items]="students"
+                bindLabel="lastName"
+                placeholder="Select Student"
                 appendTo="body"
                 [multiple]="true"
-                [(ngModel)]="classesSelected"
+                [(ngModel)]="studentsSelected"
                 [ngModelOptions]="{standalone: true}">
                 </ng-select>
             </div>

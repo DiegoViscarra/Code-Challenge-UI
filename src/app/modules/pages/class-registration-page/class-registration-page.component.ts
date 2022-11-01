@@ -4,6 +4,8 @@ import { Student } from 'src/app/models/Student';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ClassService } from 'src/app/services/services-pages/services-pages-class/class.service';
+import { RegistrationService } from 'src/app/services/services-pages/services-pages-registration/registration.service';
+import { RegistrationToClass } from 'src/app/models/RegistrationToClass';
 
 @Component({
   selector: 'app-class-registration-page',
@@ -13,7 +15,8 @@ import { ClassService } from 'src/app/services/services-pages/services-pages-cla
 export class ClassRegistrationPageComponent implements OnInit {
   students: Student[]=[];
   class: Class;
-  constructor(private classService: ClassService, private _location: Location, private router: Router) { 
+  constructor(private classService: ClassService, private _location: Location, private router: Router,
+    private registrationService: RegistrationService) { 
     this.class = this.router.getCurrentNavigation().extras.state.class;
   }
   searchName: string="";
@@ -30,6 +33,10 @@ export class ClassRegistrationPageComponent implements OnInit {
       this.students = course.simpleStudentsDTOs;
       this.sortStudents();
     });
+  }
+
+  onRegisterStudents(registrationToClass: RegistrationToClass){
+    this.getClassStudents();
   }
 
   sortStudents(){
