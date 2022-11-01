@@ -43,8 +43,8 @@
                         <tr *ngFor="let class of classes | filterClass:searchName | paginate: { itemsPerPage: itemsPerPage,
                         currentPage: page,
                         totalItems: totalRecords } ; let i = index">
-                            <td>{{ class.title }}</td>
-                            <td>{{ class.description }}</td>
+                            <td (click)="onGoClassStudents(class)">{{ class.title }}</td>
+                            <td (click)="onGoClassStudents(class)">{{ class.description }}</td>
                             <td class="actions">
                                 <div class="row">
                                     <div class="col">

@@ -15,6 +15,10 @@ export class ClassService {
     return this.http.get<Class[]>(`${this.classUrl}`);
   }
 
+  getClassWithStudents(code: string): Observable<Class>{
+    return this.http.get<Class>(`${this.classUrl}/${code}/students`);
+  }
+
   addClass(course: Class): Observable<Class>{
     return this.http.post<Class>(`${this.classUrl}`, course);
   }
