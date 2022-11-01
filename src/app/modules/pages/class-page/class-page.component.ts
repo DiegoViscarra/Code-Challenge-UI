@@ -29,6 +29,11 @@ export class ClassPageComponent implements OnInit {
     });
   }
 
+  onRegisterClass(course: Class){
+    this.classes.push(course);
+    this.sortClasses();
+  }
+
   sortClasses(){
     this.classes = this.classes.sort((class1, class2) => {
       if (class1.title > class2.title) {

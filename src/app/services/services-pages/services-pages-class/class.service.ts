@@ -15,6 +15,10 @@ export class ClassService {
     return this.http.get<Class[]>(`${this.classUrl}`);
   }
 
+  addClass(course: Class): Observable<Class>{
+    return this.http.post<Class>(`${this.classUrl}`, course);
+  }
+
   deleteClass(code: string): Observable<boolean>{
     return this.http.delete<boolean>(`${this.classUrl}/${code}`);
   }

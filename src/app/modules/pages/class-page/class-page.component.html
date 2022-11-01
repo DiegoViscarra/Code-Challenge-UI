@@ -22,6 +22,9 @@
                         <label class="title-value">Showing {{ (page - 1) * itemsPerPage + 1 }} - {{ page * itemsPerPage }} of {{ classes.length }} classes</label><br>
                     </label>
                 </div>
+                <div class="col button-create">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClassModal"><i class="fas fa-plus-circle"></i>  Register Class</button>
+                </div>
             </div>   
 
             <table class="table table-bordered">
@@ -56,6 +59,14 @@
                 previousLabel="Previous"
                 nextLabel="Next"></pagination-controls>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="addClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-add-class-page (onRegisterClass)="onRegisterClass($event)"></app-add-class-page>
         </div>
     </div>
 </div>
