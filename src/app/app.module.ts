@@ -13,6 +13,8 @@ import { DeleteStudentPageComponent } from './modules/pages/components/component
 import { AddStudentPageComponent } from './modules/pages/components/components-page/components-student-page/add-student-page/add-student-page.component';
 import { FieldErrorDisplayComponent } from './modules/pages/components/field-error-display/field-error-display.component';
 import { EditStudentPageComponent } from './modules/pages/components/components-page/components-student-page/edit-student-page/edit-student-page.component';
+import { StudentRegistrationsPageComponent } from './modules/pages/student-registrations-page/student-registrations-page.component';
+import { FilterClassPipe } from './services/services-filters/services-filters-class/filter-class.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { EditStudentPageComponent } from './modules/pages/components/components-
     DeleteStudentPageComponent,
     AddStudentPageComponent,
     FieldErrorDisplayComponent,
-    EditStudentPageComponent
+    EditStudentPageComponent,
+    StudentRegistrationsPageComponent,
+    FilterClassPipe
   ],
   imports: [
     BrowserModule,
