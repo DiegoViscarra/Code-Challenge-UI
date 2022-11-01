@@ -22,6 +22,9 @@
                         <label class="title-value">Showing {{ (page - 1) * itemsPerPage + 1 }} - {{ page * itemsPerPage }} of {{ classes.length }} classes</label><br>
                     </label>
                 </div>
+                <div class="col button-create">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRegistrationToStudentModal"><i class="fas fa-plus-circle"></i>  Register To Classes</button>
+                </div>
             </div>   
 
             <table class="table table-bordered">
@@ -29,6 +32,7 @@
                 <tr class="table-primary">
                     <th>Title</th>
                     <th>Description</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,6 +45,13 @@
                         totalItems: totalRecords } ; let i = index">
                             <td>{{ class.title }}</td>
                             <td>{{ class.description }}</td>
+                            <td class="actions">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRegistrationToStudentModal" (click)="onDelete(class)" title="Delete registration"><i class="fas fa-trash-alt"></i>  </button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </ng-container>
                 </tbody>
@@ -50,6 +61,22 @@
                 previousLabel="Previous"
                 nextLabel="Next"></pagination-controls>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addRegistrationToStudentModal" tabindex="-1" role="dialog" aria-labelledby="addRegistrationToStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-add-student-registration-page [student]="student" (onRegisterClasses)="onRegisterClasses($event)"></app-add-student-registration-page>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteRegistrationToStudentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModuleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-delete-student-registration-page (onDeleteRegistration)="onDeleteRegistration($event)"></app-delete-student-registration-page> 
         </div>
     </div>
 </div>

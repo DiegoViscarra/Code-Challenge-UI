@@ -15,6 +15,9 @@ import { FieldErrorDisplayComponent } from './modules/pages/components/field-err
 import { EditStudentPageComponent } from './modules/pages/components/components-page/components-student-page/edit-student-page/edit-student-page.component';
 import { StudentRegistrationsPageComponent } from './modules/pages/student-registrations-page/student-registrations-page.component';
 import { FilterClassPipe } from './services/services-filters/services-filters-class/filter-class.pipe';
+import { AddStudentRegistrationPageComponent } from './modules/pages/components/components-page/components-student-registration-page/add-student-registration-page/add-student-registration-page.component';
+import { NgSelectModule } from "@ng-select/ng-select";
+import { DeleteStudentRegistrationPageComponent } from './modules/pages/components/components-page/components-student-registration-page/delete-student-registration-page/delete-student-registration-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { FilterClassPipe } from './services/services-filters/services-filters-cl
     FieldErrorDisplayComponent,
     EditStudentPageComponent,
     StudentRegistrationsPageComponent,
-    FilterClassPipe
+    FilterClassPipe,
+    AddStudentRegistrationPageComponent,
+    DeleteStudentRegistrationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { FilterClassPipe } from './services/services-filters/services-filters-cl
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,7 +27,7 @@ export class StudentService {
     return this.http.put<Student>(`${this.studentUrl}/${studentId}`, student);
   }
 
-  deleteStudent(studentId: string): Observable<Student>{
-    return this.http.delete<Student>(`${this.studentUrl}/${studentId}`);
+  deleteStudent(studentId: string): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.studentUrl}/${studentId}`);
   }
 }
