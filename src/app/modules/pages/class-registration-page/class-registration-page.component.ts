@@ -4,6 +4,8 @@ import { Student } from 'src/app/models/Student';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ClassService } from 'src/app/services/services-pages/services-pages-class/class.service';
+import { RegistrationService } from 'src/app/services/services-pages/services-pages-registration/registration.service';
+import { RegistrationToClass } from 'src/app/models/RegistrationToClass';
 
 @Component({
   selector: 'app-class-registration-page',
@@ -13,7 +15,9 @@ import { ClassService } from 'src/app/services/services-pages/services-pages-cla
 export class ClassRegistrationPageComponent implements OnInit {
   students: Student[]=[];
   class: Class;
-  constructor(private classService: ClassService, private _location: Location, private router: Router) { 
+  toDeleteStudent: Student;
+  constructor(private classService: ClassService, private _location: Location, private router: Router,
+    private registrationService: RegistrationService) { 
     this.class = this.router.getCurrentNavigation().extras.state.class;
   }
   searchName: string="";
@@ -32,6 +36,10 @@ export class ClassRegistrationPageComponent implements OnInit {
     });
   }
 
+  onRegisterStudents(registrationToClass: RegistrationToClass){
+    this.getClassStudents();
+  }
+
   sortStudents(){
     this.students = this.students.sort((student1, student2) => {
       if (student1.firstName > student2.firstName) {
@@ -42,6 +50,18 @@ export class ClassRegistrationPageComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  onDelete(student: Student){
+    this.toDeleteStudent = student;
+  }
+
+  onDeleteRegistration(bool: boolean){
+    if(bool){ 
+      this.registrationService.deleteRegistration(this.class.code, this.toDeleteStudent.studentId).subscribe(resp =>{
+        this.getClassStudents();
+      });
+    }
   }
 
   backClicked() {

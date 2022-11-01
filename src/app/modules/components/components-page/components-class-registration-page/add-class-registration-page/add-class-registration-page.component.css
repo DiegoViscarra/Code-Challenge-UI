@@ -1,0 +1,7 @@
+button:hover {
+    opacity: 0.8;
+}
+
+::ng-deep .ng-dropdown-panel {
+    z-index: 9999999!important;
+}

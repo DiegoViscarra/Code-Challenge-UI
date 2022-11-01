@@ -22,6 +22,9 @@
                         <label class="title-value">Showing {{ (page - 1) * itemsPerPage + 1 }} - {{ page * itemsPerPage }} of {{ students.length }} students</label><br>
                     </label>
                 </div>
+                <div class="col button-create">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRegistrationToClassModal"><i class="fas fa-plus-circle"></i>  Register Students</button>
+                </div>
             </div>   
 
             <table class="table table-bordered">
@@ -43,6 +46,11 @@
                             <td>{{ student.firstName }}</td>
                             <td>{{ student.lastName }}</td>
                             <td class="actions">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRegistrationToClassModal" (click)="onDelete(student)" title="Delete registration"><i class="fas fa-trash-alt"></i>  </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </ng-container>
@@ -53,6 +61,22 @@
                 previousLabel="Previous"
                 nextLabel="Next"></pagination-controls>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addRegistrationToClassModal" tabindex="-1" role="dialog" aria-labelledby="addRegistrationToClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-add-class-registration-page [class]="class" (onRegisterStudents)="onRegisterStudents($event)"></app-add-class-registration-page>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteRegistrationToClassModal" tabindex="-1" role="dialog" aria-labelledby="deleteModuleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-delete-class-registration-page (onDeleteRegistration)="onDeleteRegistration($event)"></app-delete-class-registration-page> 
         </div>
     </div>
 </div>
