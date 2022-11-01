@@ -1,21 +1,21 @@
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Register new student</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Edit student</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
     <form #myForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="form">
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="firstName" class="col-form-label">First Name:</label>
-                <input type="text" id="firstName" class="form-control" formControlName="inputFirstName" [(ngModel)]="firstName" name="firstName" placeholder="First Name" required>
+                <label for="editFirstName" class="col-form-label">New First Name:</label>
+                <input type="text" id="editFirstName" class="form-control" formControlName="inputFirstName" [(ngModel)]="newFirstName" name="firstName" placeholder="First Name" value="{{spaceToEdit?.firstName}}">
                 <app-field-error-display 
                     [displayError]="isFieldValid('inputFirstName')" 
                     errorMsg="First name is required">
                 </app-field-error-display>
             </div>
             <div class="form-group col-md-12">
-                <label for="lastName" class="col-form-label">Last Name:</label>
-                <input type="text" id="lastName" class="form-control" formControlName="inputLastName" [(ngModel)]="lastName" name="lastName"  placeholder="Last Name" required>
+                <label for="editLastName" class="col-form-label">New Last Name:</label>
+                <input type="text" id="editLastName" class="form-control" formControlName="inputLastName" [(ngModel)]="newLastName" name="lastName"  placeholder="Last Name" value="{{spaceToEdit?.lastName}}">
                 <app-field-error-display 
                     [displayError]="isFieldValid('inputLastName')" 
                     errorMsg="Last name is required">

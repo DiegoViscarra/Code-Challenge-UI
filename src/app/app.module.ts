@@ -12,6 +12,7 @@ import { FilterStudentPipe } from './services/services-filters/services-filters-
 import { DeleteStudentPageComponent } from './modules/pages/components/components-page/components-student-page/delete-student-page/delete-student-page.component';
 import { AddStudentPageComponent } from './modules/pages/components/components-page/components-student-page/add-student-page/add-student-page.component';
 import { FieldErrorDisplayComponent } from './modules/pages/components/field-error-display/field-error-display.component';
+import { EditStudentPageComponent } from './modules/pages/components/components-page/components-student-page/edit-student-page/edit-student-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FieldErrorDisplayComponent } from './modules/pages/components/field-err
     FilterStudentPipe,
     DeleteStudentPageComponent,
     AddStudentPageComponent,
-    FieldErrorDisplayComponent
+    FieldErrorDisplayComponent,
+    EditStudentPageComponent
   ],
   imports: [
     BrowserModule,

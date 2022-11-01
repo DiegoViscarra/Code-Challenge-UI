@@ -48,6 +48,9 @@
                             <td class="actions">
                                 <div class="row">
                                     <div class="col">
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editStudentModal" (click)="onEdit(student)" title="Edit student"><i class="fas fa-edit"></i>  </button>
+                                    </div>
+                                    <div class="col">
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStudentModal" (click)="onDelete(student)" title="Delete student"><i class="fas fa-trash-alt"></i>  </button>
                                     </div>
                                 </div>
@@ -69,6 +72,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <app-add-student-page (onRegisterStudent)="onRegisterStudent($event)"></app-add-student-page>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-edit-student-page [spaceToEdit]="toEditStudent" (onEditStudent)="onEditStudent($event)"></app-edit-student-page>
         </div>
     </div>
 </div>
