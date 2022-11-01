@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 export class StudentPageComponent implements OnInit {
   students: Student[]=[];
   searchName: string="";
+  toEditStudent: Student;
   toDeleteStudent: Student;
 
   constructor(private studentService: StudentService, private _location: Location) { }
@@ -24,15 +25,35 @@ export class StudentPageComponent implements OnInit {
 
   getStudents(){
     this.studentService.getStudents().subscribe(students => {
-      this.students = students.sort((student1, student2) => {
-        if (student1.firstName > student2.firstName) {
-          return 1;
-        }  
-        if (student1.firstName < student2.firstName) {
-          return -1;
-        }
-        return 0;
-      });
+      this.students = students;
+      this.sortStudents();
+    });
+  }
+
+  onRegisterStudent(student: Student){
+    this.students.push(student);
+    this.sortStudents();
+  }
+
+  sortStudents(){
+    this.students = this.students.sort((student1, student2) => {
+      if (student1.firstName > student2.firstName) {
+        return 1;
+      }  
+      if (student1.firstName < student2.firstName) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
+  onEdit(student: Student){
+    this.toEditStudent = student;
+  }
+
+  onEditStudent(student: Student){
+    this.studentService.editStudent(student.studentId, student).subscribe(student => {
+      this.students[this.students.findIndex(s => s.studentId == student.studentId)] = student
     });
   }
   

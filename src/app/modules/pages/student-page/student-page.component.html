@@ -22,6 +22,9 @@
                         <label class="title-value">Showing {{ (page - 1) * itemsPerPage + 1 }} - {{ page * itemsPerPage }} of {{ students.length }} students</label><br>
                     </label>
                 </div>
+                <div class="col button-create">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal"><i class="fas fa-plus-circle"></i>  Register Student</button>
+                </div>
             </div>   
 
             <table class="table table-bordered">
@@ -45,6 +48,9 @@
                             <td class="actions">
                                 <div class="row">
                                     <div class="col">
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editStudentModal" (click)="onEdit(student)" title="Edit student"><i class="fas fa-edit"></i>  </button>
+                                    </div>
+                                    <div class="col">
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStudentModal" (click)="onDelete(student)" title="Delete student"><i class="fas fa-trash-alt"></i>  </button>
                                     </div>
                                 </div>
@@ -58,6 +64,22 @@
                 previousLabel="Previous"
                 nextLabel="Next"></pagination-controls>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-add-student-page (onRegisterStudent)="onRegisterStudent($event)"></app-add-student-page>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-edit-student-page [spaceToEdit]="toEditStudent" (onEditStudent)="onEditStudent($event)"></app-edit-student-page>
         </div>
     </div>
 </div>
