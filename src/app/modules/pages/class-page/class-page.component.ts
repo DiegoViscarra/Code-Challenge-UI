@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 })
 export class ClassPageComponent implements OnInit {
   classes: Class[]=[];
+  toEditClass: Class;
   toDeleteClass: Class;
 
   constructor(private classService: ClassService, private _location: Location) { }
@@ -29,6 +30,11 @@ export class ClassPageComponent implements OnInit {
     });
   }
 
+  onRegisterClass(course: Class){
+    this.classes.push(course);
+    this.sortClasses();
+  }
+
   sortClasses(){
     this.classes = this.classes.sort((class1, class2) => {
       if (class1.title > class2.title) {
@@ -38,6 +44,16 @@ export class ClassPageComponent implements OnInit {
         return -1;
       }
       return 0;
+    });
+  }
+
+  onEdit(course: Class){
+    this.toEditClass = course;
+  }
+
+  onEditClass(course: Class){
+    this.classService.editClass(course.code, course).subscribe(course => {
+      this.classes[this.classes.findIndex(c => c.code == course.code)] = course
     });
   }
 
