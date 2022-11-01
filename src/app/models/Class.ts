@@ -4,5 +4,5 @@ export class Class{
     code: string;
     title: string;
     description: string;
-    students: Student[];
+    simpleStudentsDTOs: Student[];
 }
