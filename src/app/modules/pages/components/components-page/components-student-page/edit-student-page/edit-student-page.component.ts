@@ -63,7 +63,7 @@ export class EditStudentPageComponent implements OnInit {
       studentId: this.spaceToEdit.studentId,
       firstName: this.getFirstName(),
       lastName: this.getLastName(),
-      classes: null
+      simpleClassesDTOs: null
     };
   }
 

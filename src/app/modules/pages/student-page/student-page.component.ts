@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/Student';
 import { StudentService } from 'src/app/services/services-pages/services-pages-student/student.service';
 import { Location } from '@angular/common';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-student-page',
@@ -10,11 +11,11 @@ import { Location } from '@angular/common';
 })
 export class StudentPageComponent implements OnInit {
   students: Student[]=[];
-  searchName: string="";
   toEditStudent: Student;
   toDeleteStudent: Student;
 
-  constructor(private studentService: StudentService, private _location: Location) { }
+  constructor(private studentService: StudentService, private _location: Location, private router: Router) { }
+  searchName: string="";
   itemsPerPage = 10;
   totalRecords: string
   page: number = 1
@@ -67,6 +68,15 @@ export class StudentPageComponent implements OnInit {
         this.getStudents();
       });
     }
+  }
+
+  onGoStudentClasses(student: Student){
+    const navigationExtras: NavigationExtras = {
+      state: {
+        student: student,
+      }
+    };
+    this.router.navigate(['students/classes'], navigationExtras)
   }
 
   backClicked() {
