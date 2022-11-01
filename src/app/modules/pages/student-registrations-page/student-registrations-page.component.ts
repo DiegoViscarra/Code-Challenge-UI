@@ -4,6 +4,7 @@ import { StudentService } from 'src/app/services/services-pages/services-pages-s
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Class } from 'src/app/models/Class';
+import { RegistrationToStudent } from 'src/app/models/RegistrationToStudent';
 
 @Component({
   selector: 'app-student-registrations-page',
@@ -30,6 +31,10 @@ export class StudentRegistrationsPageComponent implements OnInit {
       this.classes = student.simpleClassesDTOs;
       this.sortClasses();
     });
+  }
+
+  onRegisterClasses(registrationToStudent: RegistrationToStudent){
+    this.getStudentClasses();
   }
 
   sortClasses(){

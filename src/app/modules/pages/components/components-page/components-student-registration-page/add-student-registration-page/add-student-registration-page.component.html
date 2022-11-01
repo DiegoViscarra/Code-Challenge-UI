@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Register new student</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <ng-select
+                [items]="classes"
+                bindLabel="title"
+                placeholder="Select Class"
+                appendTo="body"
+                [multiple]="true"
+                [(ngModel)]="classesSelected"
+                [ngModelOptions]="{standalone: true}">
+              </ng-select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary float-right" type="submit">Confirm</button>
+        </div>
+    </form>
+</div>
