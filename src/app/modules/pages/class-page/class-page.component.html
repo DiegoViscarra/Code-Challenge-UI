@@ -46,8 +46,13 @@
                             <td>{{ class.title }}</td>
                             <td>{{ class.description }}</td>
                             <td class="actions">
-                                <div class="col">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClassModal" (click)="onDelete(class)" title="Delete class"><i class="fas fa-trash-alt"></i>  </button>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editClassModal" (click)="onEdit(class)" title="Edit class"><i class="fas fa-edit"></i>  </button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClassModal" (click)="onDelete(class)" title="Delete class"><i class="fas fa-trash-alt"></i>  </button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -67,6 +72,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <app-add-class-page (onRegisterClass)="onRegisterClass($event)"></app-add-class-page>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editClassModal" tabindex="-1" role="dialog" aria-labelledby="editClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-edit-class-page [spaceToEdit]="toEditClass" (onEditClass)="onEditClass($event)"></app-edit-class-page>
         </div>
     </div>
 </div>
