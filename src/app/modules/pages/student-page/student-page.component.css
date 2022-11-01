@@ -41,6 +41,13 @@ tr:hover {
     width: 450px;
 }
 
+.button-create{
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .modal-dialog {
     top: 20%;
 }

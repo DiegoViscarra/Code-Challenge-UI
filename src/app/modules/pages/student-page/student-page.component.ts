@@ -24,15 +24,25 @@ export class StudentPageComponent implements OnInit {
 
   getStudents(){
     this.studentService.getStudents().subscribe(students => {
-      this.students = students.sort((student1, student2) => {
-        if (student1.firstName > student2.firstName) {
-          return 1;
-        }  
-        if (student1.firstName < student2.firstName) {
-          return -1;
-        }
-        return 0;
-      });
+      this.students = students;
+      this.sortStudents();
+    });
+  }
+
+  onRegisterStudent(student: Student){
+    this.students.push(student);
+    this.sortStudents();
+  }
+
+  sortStudents(){
+    this.students = this.students.sort((student1, student2) => {
+      if (student1.firstName > student2.firstName) {
+        return 1;
+      }  
+      if (student1.firstName < student2.firstName) {
+        return -1;
+      }
+      return 0;
     });
   }
   

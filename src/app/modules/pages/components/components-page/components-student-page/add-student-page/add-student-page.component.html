@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Register new student</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="firstName" class="col-form-label">First Name:</label>
+                <input type="text" id="firstName" class="form-control" formControlName="inputFirstName" [(ngModel)]="firstName" name="firstName" placeholder="First Name" required>
+                <app-field-error-display 
+                    [displayError]="isFieldValid('inputFirstName')" 
+                    errorMsg="First name is required">
+                </app-field-error-display>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="lastName" class="col-form-label">Last Name:</label>
+                <input type="text" id="lastName" class="form-control" formControlName="inputLastName" [(ngModel)]="lastName" name="lastName"  placeholder="Last Name" required>
+                <app-field-error-display 
+                    [displayError]="isFieldValid('inputLastName')" 
+                    errorMsg="Last name is required">
+                </app-field-error-display>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary float-right" type="submit">Confirm</button>
+</div>
