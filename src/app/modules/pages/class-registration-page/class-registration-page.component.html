@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="container-fluid">  
+        <div class="title">
+            <h1>Students of class {{ class.title }}</h1>
+            <button type="button" class="btn btn-primary" (click)="backClicked()"><i class="fas fa-arrow-left"></i>  Back</button>
+        </div>
+        <div class="table-responsive">
+            <div class="row">
+                <div class="col">
+                    <div class="searcher-button">
+                        <label >Search by First name/Last name</label>
+                        <input class="form-control" [(ngModel)]="searchName" type="text" placeholder="Searcher" aria-label="Search">
+                    </div>
+                    <label>
+                        Data per page:
+                        <select [(ngModel)]="itemsPerPage">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        <label class="title-value">Showing {{ (page - 1) * itemsPerPage + 1 }} - {{ page * itemsPerPage }} of {{ students.length }} students</label><br>
+                    </label>
+                </div>
+            </div>   
+
+            <table class="table table-bordered">
+                <thead>
+                <tr class="table-primary">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="(students.length < 1)">
+                        <td colspan="6">There are no students registered</td>
+                    </tr>
+                    <ng-container *ngIf="(students.length > 0)">
+                        <tr *ngFor="let student of students | filterStudent:searchName | paginate: { itemsPerPage: itemsPerPage,
+                        currentPage: page,
+                        totalItems: totalRecords } ; let i = index">
+                            <td>{{ student.firstName }}</td>
+                            <td>{{ student.lastName }}</td>
+                            <td class="actions">
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+            <div>
+                <pagination-controls class="my-pagination" (pageChange)="page = $event"
+                previousLabel="Previous"
+                nextLabel="Next"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
