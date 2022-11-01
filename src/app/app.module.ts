@@ -24,6 +24,7 @@ import { AddClassPageComponent } from './modules/components/components-page/comp
 import { EditClassPageComponent } from './modules/components/components-page/components-class-page/edit-class-page/edit-class-page.component';
 import { ClassRegistrationPageComponent } from './modules/pages/class-registration-page/class-registration-page.component';
 import { AddClassRegistrationPageComponent } from './modules/components/components-page/components-class-registration-page/add-class-registration-page/add-class-registration-page.component';
+import { DeleteClassRegistrationPageComponent } from './modules/components/components-page/components-class-registration-page/delete-class-registration-page/delete-class-registration-page.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AddClassRegistrationPageComponent } from './modules/components/componen
     AddClassPageComponent,
     EditClassPageComponent,
     ClassRegistrationPageComponent,
-    AddClassRegistrationPageComponent
+    AddClassRegistrationPageComponent,
+    DeleteClassRegistrationPageComponent
   ],
   imports: [
     BrowserModule,

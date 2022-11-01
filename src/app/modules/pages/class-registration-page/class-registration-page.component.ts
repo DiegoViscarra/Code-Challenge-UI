@@ -15,6 +15,7 @@ import { RegistrationToClass } from 'src/app/models/RegistrationToClass';
 export class ClassRegistrationPageComponent implements OnInit {
   students: Student[]=[];
   class: Class;
+  toDeleteStudent: Student;
   constructor(private classService: ClassService, private _location: Location, private router: Router,
     private registrationService: RegistrationService) { 
     this.class = this.router.getCurrentNavigation().extras.state.class;
@@ -49,6 +50,18 @@ export class ClassRegistrationPageComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  onDelete(student: Student){
+    this.toDeleteStudent = student;
+  }
+
+  onDeleteRegistration(bool: boolean){
+    if(bool){ 
+      this.registrationService.deleteRegistration(this.class.code, this.toDeleteStudent.studentId).subscribe(resp =>{
+        this.getClassStudents();
+      });
+    }
   }
 
   backClicked() {

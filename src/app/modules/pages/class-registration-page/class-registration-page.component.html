@@ -46,6 +46,11 @@
                             <td>{{ student.firstName }}</td>
                             <td>{{ student.lastName }}</td>
                             <td class="actions">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRegistrationToClassModal" (click)="onDelete(student)" title="Delete registration"><i class="fas fa-trash-alt"></i>  </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </ng-container>
@@ -64,6 +69,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <app-add-class-registration-page [class]="class" (onRegisterStudents)="onRegisterStudents($event)"></app-add-class-registration-page>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteRegistrationToClassModal" tabindex="-1" role="dialog" aria-labelledby="deleteModuleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-delete-class-registration-page (onDeleteRegistration)="onDeleteRegistration($event)"></app-delete-class-registration-page> 
         </div>
     </div>
 </div>
