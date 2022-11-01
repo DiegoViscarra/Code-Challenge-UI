@@ -18,6 +18,8 @@ import { FilterClassPipe } from './services/services-filters/services-filters-cl
 import { AddStudentRegistrationPageComponent } from './modules/pages/components/components-page/components-student-registration-page/add-student-registration-page/add-student-registration-page.component';
 import { NgSelectModule } from "@ng-select/ng-select";
 import { DeleteStudentRegistrationPageComponent } from './modules/pages/components/components-page/components-student-registration-page/delete-student-registration-page/delete-student-registration-page.component';
+import { ClassPageComponent } from './modules/pages/class-page/class-page.component';
+import { DeleteClassPageComponent } from './modules/pages/components/components-page/components-class-page/delete-class-page/delete-class-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { DeleteStudentRegistrationPageComponent } from './modules/pages/componen
     StudentRegistrationsPageComponent,
     FilterClassPipe,
     AddStudentRegistrationPageComponent,
-    DeleteStudentRegistrationPageComponent
+    DeleteStudentRegistrationPageComponent,
+    ClassPageComponent,
+    DeleteClassPageComponent
   ],
   imports: [
     BrowserModule,
