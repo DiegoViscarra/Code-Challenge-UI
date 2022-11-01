@@ -43,6 +43,9 @@
                             <td>{{ class.title }}</td>
                             <td>{{ class.description }}</td>
                             <td class="actions">
+                                <div class="col">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClassModal" (click)="onDelete(class)" title="Delete class"><i class="fas fa-trash-alt"></i>  </button>
+                                </div>
                             </td>
                         </tr>
                     </ng-container>
@@ -53,6 +56,14 @@
                 previousLabel="Previous"
                 nextLabel="Next"></pagination-controls>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteClassModal" tabindex="-1" role="dialog" aria-labelledby="deleteModuleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <app-delete-class-page (onDeleteClass)="onDeleteClass($event)"></app-delete-class-page> 
         </div>
     </div>
 </div>

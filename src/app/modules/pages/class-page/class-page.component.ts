@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 })
 export class ClassPageComponent implements OnInit {
   classes: Class[]=[];
+  toDeleteClass: Class;
 
   constructor(private classService: ClassService, private _location: Location) { }
   searchName: string="";
@@ -38,6 +39,18 @@ export class ClassPageComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  onDelete(course: Class){
+    this.toDeleteClass = course;
+  }
+
+  onDeleteClass(bool: boolean){
+    if(bool){ 
+      this.classService.deleteClass(this.toDeleteClass.code).subscribe(resp =>{
+        this.getClasses();
+      });
+    }
   }
 
   backClicked() {

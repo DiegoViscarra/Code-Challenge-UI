@@ -14,4 +14,8 @@ export class ClassService {
   getClasses(): Observable<Class[]>{
     return this.http.get<Class[]>(`${this.classUrl}`);
   }
+
+  deleteClass(code: string): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.classUrl}/${code}`);
+  }
 }
