@@ -14,4 +14,8 @@ export class RegistrationService {
   addRegistrationToStudent(registrationToStudent: RegistrationToStudent): Observable<RegistrationToStudent>{
     return this.http.post<RegistrationToStudent>(`${this.registrationUrl}/classes`, registrationToStudent);
   }
+
+  deleteRegistration(code: string, studentId: string): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.registrationUrl}/${code}/class/${studentId}/student`);
+  }
 }

@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Class } from 'src/app/models/Class';
 import { RegistrationToStudent } from 'src/app/models/RegistrationToStudent';
+import { RegistrationService } from 'src/app/services/services-pages/services-pages-registration/registration.service';
 
 @Component({
   selector: 'app-student-registrations-page',
@@ -13,8 +14,10 @@ import { RegistrationToStudent } from 'src/app/models/RegistrationToStudent';
 })
 export class StudentRegistrationsPageComponent implements OnInit {
   classes: Class[]=[];
+  toDeleteClass: Class;
   student: Student;
-  constructor(private studentService: StudentService, private _location: Location, private router: Router) { 
+  constructor(private studentService: StudentService, private _location: Location, private router: Router,
+    private registrationService: RegistrationService) { 
     this.student = this.router.getCurrentNavigation().extras.state.student;
   }
   searchName: string="";
@@ -47,6 +50,18 @@ export class StudentRegistrationsPageComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  onDelete(course: Class){
+    this.toDeleteClass = course;
+  }
+
+  onDeleteRegistration(bool: boolean){
+    if(bool){ 
+      this.registrationService.deleteRegistration(this.toDeleteClass.code, this.student.studentId).subscribe(resp =>{
+        this.getStudentClasses();
+      });
+    }
   }
 
   backClicked() {
